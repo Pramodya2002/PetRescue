@@ -9,20 +9,106 @@ body {
     background-color: #f8f9fa;
 }
 
-header {
+/* Header */
+.header {
+    background: linear-gradient(135deg, #9e571d, #6f4501);
+    padding: 20px 0; /* Increase padding for a larger header */
+    color: white;
+    border-bottom: 4px solid #5a2f02;
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Vertically center content */
+    height: 150px; /* Increased height */
+    justify-content: flex-start; /* Align items to the left */
+  }
+  
+  .header-container {
+    display: flex;
+    align-items: center;
     width: 100%;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    max-width: 2000px;
+    margin: 0 auto;
     padding: 0 20px;
-}
-
-.logo {
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    margin-right: auto; /* Push logo and title to the left */
+  }
+  
+  .logo img {
+    width: 120px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .title {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 80px; /* Increased font size */
+    color: #f7d1aa;
+    margin-left: 15px; /* Margin for spacing */
+    font-weight: 700;
+    position: relative;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+  }
+  
+  .nav {
     display: flex;
     align-items: center;
-}
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+  }
+  
+  .nav-item {
+    margin-left: 15px; /* Spacing between buttons */
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: white;
+    font-size: 16px; /* Font size for buttons */
+    padding: 12px 20px; /* Padding for larger buttons */
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+  }
+  
+  .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .signup-button, .login-button {
+    padding: 12px 20px; /* Padding for larger buttons */
+    border-radius: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  }
+  
+  .signup-button {
+    background-color: #af874c;
+    color: white;
+  }
+  
+  .signup-button:hover {
+    background-color: #a05a45;
+    transform: scale(1.05);
+  }
+  
+  .login-button {
+    background-color: #a05a45;
+    color: white;
+  }
+  
+  .login-button:hover {
+    background-color: #af874c;
+    transform: scale(1.05);
+  }
+  
 
 
 main {
