@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2024 at 05:06 PM
+-- Generation Time: Aug 20, 2024 at 08:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -32,7 +32,6 @@ CREATE TABLE `adoptdog` (
   `dog_name` varchar(100) NOT NULL,
   `your_name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `dog_preference` enum('Male','Female','No preference') NOT NULL,
   `submission_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -40,12 +39,14 @@ CREATE TABLE `adoptdog` (
 -- Dumping data for table `adoptdog`
 --
 
-INSERT INTO `adoptdog` (`id`, `dog_name`, `your_name`, `email`, `dog_preference`, `submission_date`) VALUES
-(1, 'lll', 'mike', 'kk@gmail.com', 'Female', '2024-07-16 12:15:57'),
-(2, 'Lucy', 'Kasun', 'kasun@gmail.com', 'Male', '2024-07-16 12:30:51'),
-(3, 'Rocky', 'Deshan', 'deshan@gmail.com', 'Male', '2024-07-20 09:23:04'),
-(4, 'Max', 'Himesh', 'himesh@gmail.com', 'Male', '2024-07-21 12:01:17'),
-(5, 'Rocky', 'Gayan', 'gayan@gmail.com', 'Male', '2024-07-22 15:05:01');
+INSERT INTO `adoptdog` (`id`, `dog_name`, `your_name`, `email`, `submission_date`) VALUES
+(1, 'lll', 'mike', 'kk@gmail.com', '2024-07-16 12:15:57'),
+(2, 'Lucy', 'Kasun', 'kasun@gmail.com', '2024-07-16 12:30:51'),
+(3, 'Rocky', 'Deshan', 'deshan@gmail.com', '2024-07-20 09:23:04'),
+(4, 'Max', 'Himesh', 'himesh@gmail.com', '2024-07-21 12:01:17'),
+(5, 'Rocky', 'Gayan', 'gayan@gmail.com', '2024-07-22 15:05:01'),
+(6, 'Lucy', 'pavi', 'pavi@gmail.com', '2024-07-24 06:42:33'),
+(7, 'Max', 'Raveena', 'ravi@gmail.com', '2024-07-24 06:43:43');
 
 -- --------------------------------------------------------
 
@@ -88,18 +89,24 @@ CREATE TABLE `emergencyreport` (
   `description` varchar(255) NOT NULL,
   `location` varchar(255) NOT NULL,
   `photos` text DEFAULT NULL,
-  `status` varchar(50) DEFAULT 'Status'
+  `status` varchar(50) DEFAULT 'Status',
+  `priority` varchar(20) NOT NULL DEFAULT 'low'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `emergencyreport`
 --
 
-INSERT INTO `emergencyreport` (`id`, `description`, `location`, `photos`, `status`) VALUES
-(1, 'road injury', 'Colombo', 'a:1:{i:0;s:20:\"uploads/loginDog.jpg\";}', 'rescued'),
-(2, 'Seriously injured ', 'Kadawatha', 'a:1:{i:0;s:21:\"uploads/carinjury.jpg\";}', 'Status'),
-(3, 'Dislocated leg', 'Maharagama', 'a:1:{i:0;s:21:\"uploads/legbroken.png\";}', 'Status'),
-(4, 'Accident', 'colombo', 'a:1:{i:0;s:19:\"uploads/Dogbite.jpg\";}', 'Status');
+INSERT INTO `emergencyreport` (`id`, `description`, `location`, `photos`, `status`, `priority`) VALUES
+(1, 'road injury', 'Colombo', 'a:1:{i:0;s:20:\"uploads/loginDog.jpg\";}', 'rescued', 'low'),
+(2, 'Seriously injured ', 'Kadawatha', 'a:1:{i:0;s:21:\"uploads/carinjury.jpg\";}', 'rescued', 'low'),
+(3, 'Dislocated leg', 'Maharagama', 'a:1:{i:0;s:21:\"uploads/legbroken.png\";}', 'rescued', 'low'),
+(4, 'Accident', 'colombo', 'a:1:{i:0;s:19:\"uploads/Dogbite.jpg\";}', 'rescue in progress', 'low'),
+(12, 'dislocated leg', 'Hospital Junction, Homagama South, Homagama, Colombo District, Western Province, 10200, Sri Lanka', 'a:1:{i:0;s:22:\"uploads/pet_before.png\";}', 'Status', 'low'),
+(15, 'broken ribbs', 'Duke Street, L B Gate, Fort, Slave Island, Colombo, Colombo District, Western Province, 10110, Sri Lanka', 'a:1:{i:0;s:16:\"uploads/dog4.jpg\";}', 'rescued', 'high'),
+(16, 'car accident', 'Cinnamon Grand Colombo Hotel Parking, Sri Uttarananda Mawatha, Liberty Circle, Kollupitiya, Slave Island, Colombo, Colombo District, Western Province, 00200, Sri Lanka', 'a:1:{i:0;s:20:\"uploads/gallery5.jpg\";}', 'rescue in progress', 'medium'),
+(20, 'male dog with a broken leg', 'Trace Lane, Trace Expert City - Maradana, Suduwella, Slave Island, Colombo, Colombo District, Western Province, 00010, Sri Lanka', 'a:1:{i:0;s:21:\"uploads/download.jpeg\";}', 'Status', 'high'),
+(21, 'male dog with a broken leg', 'Trace Lane, Trace Expert City - Maradana, Suduwella, Slave Island, Colombo, Colombo District, Western Province, 00010, Sri Lanka', 'a:1:{i:0;s:21:\"uploads/download.jpeg\";}', 'Status', 'high');
 
 -- --------------------------------------------------------
 
@@ -142,25 +149,38 @@ CREATE TABLE `registration` (
   `email` varchar(100) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `phone_number` varchar(20) DEFAULT NULL,
   `location` varchar(255) DEFAULT NULL,
-  `bio` text DEFAULT NULL,
-  `interest` text DEFAULT NULL,
-  `user_type` varchar(50) NOT NULL,
   `preferences` text DEFAULT NULL,
-  `gender` varchar(10) DEFAULT NULL
+  `gender` varchar(10) DEFAULT NULL,
+  `user_role` enum('dogLover','vetClinic','animalShelter') NOT NULL,
+  `clinic_name` varchar(255) DEFAULT NULL,
+  `shelter_name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `registration`
 --
 
-INSERT INTO `registration` (`id`, `full_name`, `email`, `username`, `password`, `phone_number`, `location`, `bio`, `interest`, `user_type`, `preferences`, `gender`) VALUES
-(1, 'Imesha', 'imesha@gmail.com', 'Imesha', '$2y$10$uTpsGf2CaqJRmo24yThnm.IgrbqrdmwR9YZ8Uu14Q8QRr.rBXXnqO', '8863255', 'colombo', '', 'Adopting', 'Volunteer', 'Email', NULL),
-(2, 'Kasun', 'kasun@gmail.com', 'Kasun', '$2y$10$X6Y94NPpwHFObjeQy2XjiuE2Q1rS2wRGuMcOybkpVTxNNFDoyLj7G', '555555555', 'Galle', '', '', 'Volunteer', 'Email', NULL),
-(4, 'dilshan', 'dilshan@gmail.com', 'Dilshan', '$2y$10$cjABWweriHl5frUv5fYo4uL9EwvHqU3VaL6ObdewncfiRdkO5gEj6', '55555', 'Negombo', '', '', 'General user', '', NULL),
-(8, 'Sara', 'sara@gmail.com', 'Sara', '$2y$10$mWNzGw/vYmYB5r2kNf74memrGkDRlYGN1xnMm5lFZOX4ZLZOQL2LG', '072-353958', NULL, '', NULL, 'Vet clinic', 'Email', 'Female'),
-(11, 'Pramodya', 'pramo@gmail.com', 'Pramodya', '$2y$10$A43E2yjFOBjoWqYCTqys8.6Q2qGdLJxQnJYaPPbhJwpYzF//6hCBy', '075-3696523', NULL, '', NULL, 'Vet clinic', 'Email', 'Female');
+INSERT INTO `registration` (`id`, `full_name`, `email`, `username`, `password`, `location`, `preferences`, `gender`, `user_role`, `clinic_name`, `shelter_name`) VALUES
+(1, 'Imesha', 'imesha@gmail.com', 'Imesha', '$2y$10$uTpsGf2CaqJRmo24yThnm.IgrbqrdmwR9YZ8Uu14Q8QRr.rBXXnqO', 'colombo', 'Email', NULL, 'dogLover', NULL, NULL),
+(2, 'Kasun', 'kasun@gmail.com', 'Kasun', '$2y$10$X6Y94NPpwHFObjeQy2XjiuE2Q1rS2wRGuMcOybkpVTxNNFDoyLj7G', 'Galle', 'Email', NULL, 'dogLover', NULL, NULL),
+(4, 'dilshan', 'dilshan@gmail.com', 'Dilshan', '$2y$10$cjABWweriHl5frUv5fYo4uL9EwvHqU3VaL6ObdewncfiRdkO5gEj6', 'Negombo', '', NULL, 'dogLover', NULL, NULL),
+(8, 'Sara', 'sara@gmail.com', 'Sara', '$2y$10$mWNzGw/vYmYB5r2kNf74memrGkDRlYGN1xnMm5lFZOX4ZLZOQL2LG', NULL, 'Email', 'Female', 'dogLover', NULL, NULL),
+(11, 'Pramodya', 'pramo@gmail.com', 'Pramodya', '$2y$10$A43E2yjFOBjoWqYCTqys8.6Q2qGdLJxQnJYaPPbhJwpYzF//6hCBy', NULL, 'Email', 'Female', 'dogLover', NULL, NULL),
+(12, 'Pramodya Athauda', 'pramodya511@gmail.com', 'Pramo2002', '$2y$10$sL.AjeLflcbw0iCdCMSl5.LPqrx8JnDUx3uOxu6EIgGqO3omkCh6K', NULL, NULL, NULL, 'dogLover', NULL, NULL),
+(13, 'amal perera', 'amalp@gmail.com', 'amalp', '$2y$10$pINCzR5DVbjvTmbWZwepwOJbOezvROTtKGWeBj59b7UcYcYmt7sha', NULL, NULL, NULL, 'dogLover', NULL, NULL),
+(15, 'gihan', 'gihan@gmail.com', 'gihan33', '$2y$10$gnQhP0lCuhnT1UYymOp7n.FcZ6fNNkQaGZutMCVNAr54tXt.e50s2', NULL, NULL, NULL, 'dogLover', NULL, NULL),
+(17, 'emma', 'emma@gmail.com', 'emma22', '$2y$10$sBNt2dulu7VP8.ZV4/flauTAeezCxRGBsKLft2F5txRjJCC.ocEhe', NULL, NULL, NULL, 'dogLover', NULL, NULL),
+(18, 'emily', 'emily@gmail.com', 'emily', '$2y$10$JqF/j7Nf6426xVQKBVGWW.liaL0VqDqC7VDPmXvDLPzi6cfg4O5QC', NULL, NULL, NULL, 'dogLover', NULL, NULL),
+(19, 'terry', 'terry@gmail.com', 'terry666', '$2y$10$dSUX6YS6paHJwpLA.ogHRunlN1dEUreN/BqzIXZdFwaBohWLEaN3u', NULL, NULL, NULL, 'dogLover', NULL, NULL),
+(20, 'jane', 'jane@gmail.com', 'jane233', '$2y$10$lS36/IdTFhT3w8pJwiDEeeEQynM7rURKlnW/VHoWfP8DaqlWlkLDK', NULL, NULL, NULL, 'dogLover', NULL, NULL),
+(21, 'joanne', 'joanne@gmail.com', 'joanne', '$2y$10$O4MjpqUaloCGRCOUM4hvgOvnxdPBr5vPr8o1.nM3yN1oIsY3k79Xe', NULL, NULL, NULL, 'dogLover', NULL, NULL),
+(22, '', 'dogstar@gmail.com', 'dogstar', '$2y$10$5cJKQ1wC4Hh9a6g3wZnlyeIOJx1fvjIard/KQ6Oxay4IGuMFD2Svi', NULL, NULL, NULL, 'animalShelter', NULL, 'dogstar'),
+(23, 'erik', 'erik@gmail.com', 'erik', '$2y$10$xI/tOqby3jsq7hKNWmUYJeyyXqLh0M33IvfSV3XIlYaS6Ulj22A3W', NULL, NULL, NULL, 'dogLover', NULL, NULL),
+(24, '', 'vision@gmail.com', 'vision', '$2y$10$fBXi7aALbawGEPL8bW9eIOpmH1v6cT96q3puvBVB3Uu6mRXHCTjJu', NULL, NULL, NULL, 'vetClinic', 'vision animal hospital', NULL),
+(25, '', 'embark@gmail.com', 'Embark', '$2y$10$eQjzOosnsArRBO0UiT900.IrAMEAAHk2GC5c6UmGOIAzAPT7Xv.VC', NULL, NULL, NULL, 'animalShelter', NULL, 'embark'),
+(26, '', 'bawbaw@gmail.com', 'BawBaw animal shelter', '$2y$10$hl80UMBht6/wD.liQi9KmO0Tx2FDOPTZnj03FFxk7zF1Raa7TPVhW', NULL, NULL, NULL, 'animalShelter', NULL, 'bawbaw animal shelter'),
+(27, 'Kushani Athukorala', 'kushani1988@gmail.com', 'Kushani88', '$2y$10$/bz.QAWebi7h5Tf6SNK16uXtdY10l.NwwaqICEIXmZKw1SblzOUcq', NULL, NULL, NULL, 'dogLover', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -184,8 +204,10 @@ CREATE TABLE `reportstray` (
 
 INSERT INTO `reportstray` (`id`, `description`, `location`, `photos`, `behaviour`, `created_at`, `status`) VALUES
 (45, 'Injured dog', 'Colombo', 'a:1:{i:0;s:19:\"uploads/injured.jpg\";}', 'Friendly', '2024-07-14 10:14:43', 'rescued'),
-(46, 'leg injured dog', 'Dehiwala', 'a:1:{i:0;s:21:\"uploads/legInjury.jpg\";}', 'Friendly', '2024-07-14 10:31:12', 'rescue in progress'),
-(47, 'Dogbite', 'Kalaniya', 'a:1:{i:0;s:19:\"uploads/Dogbite.jpg\";}', 'Friendly', '2024-07-14 10:45:11', 'rescue in progress');
+(46, 'leg injured dog', 'Dehiwala', 'a:1:{i:0;s:21:\"uploads/legInjury.jpg\";}', 'Friendly', '2024-07-14 10:31:12', 'rescued'),
+(47, 'Dogbite', 'Kalaniya', 'a:1:{i:0;s:19:\"uploads/Dogbite.jpg\";}', 'Friendly', '2024-07-14 10:45:11', 'rescued'),
+(54, 'Dog fighting', 'Colombo', 'a:1:{i:0;s:21:\"uploads/carinjury.jpg\";}', 'Friendly', '2024-07-24 03:20:12', 'Status'),
+(57, 'normal stray dog', 'Kimbulapitiya Road, Kadirana North, Gampaha District, Western Province, 11450, Sri Lanka', 'a:1:{i:0;s:22:\"uploads/happy_pets.jpg\";}', 'Friendly', '2024-08-17 10:32:16', 'rescued');
 
 -- --------------------------------------------------------
 
@@ -303,7 +325,7 @@ ALTER TABLE `volunteer`
 -- AUTO_INCREMENT for table `adoptdog`
 --
 ALTER TABLE `adoptdog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `dogprofile`
@@ -315,7 +337,7 @@ ALTER TABLE `dogprofile`
 -- AUTO_INCREMENT for table `emergencyreport`
 --
 ALTER TABLE `emergencyreport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `lostandfound`
@@ -327,13 +349,13 @@ ALTER TABLE `lostandfound`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `reportstray`
 --
 ALTER TABLE `reportstray`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `shelterfoster`
