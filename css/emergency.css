@@ -1,61 +1,105 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
-.logo {
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #9e571d, #6f4501);
+    padding: 20px 0; /* Increase padding for a larger header */
+    color: white;
+    border-bottom: 4px solid #5a2f02;
+    display: flex; /* Use flexbox for alignment */
+    height: 150px; /* Increased height */
+    width: 100%;
+    
+  }
+  
+  .header-container {
     display: flex;
     align-items: center;
-}
-
-.logo img {
-    height: 50px;
-    margin-right: 10px;
+    width: 100%;
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    justify-content: space-between; /* Align logo/title to the left, buttons to the right */
+  
+  }
+  
+  .logo {
+    display: flex;
+    align-items:center; /* Vertically align items */
+    margin-right: 100px; /* Push logo and title to the left */
+  }
+  
+  .logo img {
+    width: 120px;
     border-radius: 50%;
-}
-
-nav {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .title {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 80px; /* Increased font size */
+    color: #f7d1aa;
+    font-weight: 700;
+    position: relative;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    margin-right: 100px;
+  }
+  
+  .nav {
     display: flex;
     align-items: center;
-}
-
-nav a {
-    margin-left: 20px;
+    justify-content: flex-end;
+  }
+  
+  .nav-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-item {
+    margin-left: 15px; /* Spacing between buttons */
+  }
+  
+  .nav-link {
     text-decoration: none;
-    color: #333;
-}
-nav a:hover {
-    text-decoration: underline;
-    color: #d84d1f;
-}
+    color: white;
+    font-size: 16px; /* Font size for buttons */
+    padding: 12px 20px; /* Padding for larger buttons */
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 
-nav input {
-    margin-left: 20px;
-    padding: 5px;
-}
+  .home-button {
+    background-color: #af874c;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    border-radius: 25px;
+    
+  }
+  
+  .home-button:hover {
+    background-color: #a05a45;
+    transform: scale(1.05);
+  }
+  
+  
 
-.container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
+
 
 h2 {
     margin-top: 0;
@@ -219,92 +263,9 @@ form {
     border-radius: 10px;
 }
 
-#footer {
-    background-color: #333;
-    color: #fcf8fb;
-    padding: 40px 20px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.footer-section {
-    flex: 1 1 300px;
-    margin-bottom: 30px;
-}
-
-.section-content {
-    padding: 0 20px;
-}
-
-.section-content h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #f393ec;
-}
-
-.section-content p,
-.section-content ul {
-    color: #f393ec;
-    line-height: 1.6;
-}
-
-.section-content ul {
-    padding: 0;
-    list-style: none;
-}
-
-.section-content ul li {
-    margin-bottom: 10px;
-}
-
-.section-content ul li a {
-    color: #f393ec;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.section-content ul li a:hover {
-    color: #f393ec;
-}
-
-.social-icons {
-    display: flex;
-    align-items: center; /* Center align items vertically */
-}
-
-.social-icons a {
-    margin-right: 15px;
-    transition: transform 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.social-icons a:last-child {
-    margin-right: 0; /* Remove margin-right from the last child to prevent extra space */
-}
-
-.social-icons a img {
-    width: 30px; /* Set a specific width for the icons */
-    height: 30px; /* Set a specific height for the icons */
-    border-radius: 50%; /* Make the icons circular */
-    transition: opacity 0.3s ease; /* Smooth transition for opacity */
-}
-
-.social-icons a:hover {
-    transform: translateY(-3px); /* Move the icon up slightly on hover */
-}
-
-.social-icons a:hover img {
-    opacity: 0.7; /* Reduce opacity of the icon on hover */
-}
 
 
-.footer-bottom {
-    text-align: center;
-    padding: 15px 0;
-    background-color: #a93ca9;
-    color: #e9a2db;
-    font-size: 14px;
-    width: 100%;
-}
+
 
 .notification {
     display: none;
