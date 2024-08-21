@@ -14,10 +14,75 @@ header {
     border-bottom: 1px solid #ddd;
     padding: 10px 0;
 }
-nav a:hover {
-    text-decoration: underline;
-    color: #d84d1f;
+
+.hero {
+    background: url('images/hero.jpg') no-repeat center center/cover; /* Background image with cover fit */
+    color: #fff; /* Text color for readability against the background */
+    padding: 80px 20px; /* Spacing around the text */
+    text-align: center; /* Center-align text */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    position: relative; /* Position for overlay effect */
+    overflow: hidden; /* Hide any overflow from child elements */
+    max-width: 1500px; /* Maximum width of the hero section */
+    margin: 0 auto; /* Center-align the hero section horizontally */
 }
+
+.hero h1 {
+    font-size: 48px; /* Large, bold heading */
+    margin-bottom: 20px; /* Space below the heading */
+    line-height: 1.2; /* Better line spacing for readability */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Subtle text shadow for contrast */
+}
+
+.hero p {
+    font-size: 20px; /* Slightly smaller than the heading */
+    max-width: 800px; /* Limit width for better readability */
+    margin: 0 auto; /* Center-align the paragraph */
+    line-height: 1.6; /* Better spacing between lines */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Subtle text shadow for contrast */
+}
+
+.hero::before {
+    content: ''; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Dark overlay for text readability */
+    z-index: 1; /* Overlay should be above the background but below text */
+}
+
+.hero h1, .hero p {
+    position: relative; /* Ensure text is above the overlay */
+    z-index: 2;
+}
+
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
 
 .container {
     display: flex;
@@ -29,47 +94,73 @@ nav a:hover {
 }
 
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
 
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-}
 
-.search input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.hero {
-    background-color: #6BAF92;
-    color: #fff;
-    text-align: center;
-    padding: 60px 20px;
-}
-
-.registration-form {
-    background-color: #fff;
+/* Form Container Styling */
+section {
     margin: 20px auto;
     max-width: 600px;
+    background-color: #fff;
     padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.registration-form h2 {
-    margin-bottom: 10px;
+.user-type-selection {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 400px;
     text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.registration-form p {
+.user-role-label {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.custom-select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.user-role-dropdown {
+    width: 100%;
+    padding: 10px 40px 10px 15px; /* Padding to account for the arrow */
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    appearance: none; /* Remove default dropdown arrow */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDE2IDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgMUwxNCAxTDggNyIgZmlsbD0iIzAwN2JmZiIgc3Ryb2tlPSJub25lIi8+PC9zdmc+'); /* Custom arrow image */
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Position the arrow */
+    background-size: 16px 8px; /* Size of the arrow */
+}
+
+.user-role-dropdown:hover {
+    border-color: #007bff;
+    box-shadow: inset 0 2px 4px rgba(0, 123, 255, 0.2);
+}
+
+
+/* Form Styling */
+.form-section {
+    margin-top: 20px;
+}
+
+.form-section h2 {
+    font-size: 24px;
     margin-bottom: 20px;
     text-align: center;
+    color: #4CAF50;
 }
 
 .form-group {
@@ -78,49 +169,68 @@ nav ul li a {
 
 .form-group label {
     display: block;
+    font-weight: bold;
     margin-bottom: 5px;
 }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.checkbox-group,
-.radio-group {
-    display: flex;
-    gap: 10px;
-}
-
-.checkbox-group label,
-.radio-group label {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.checkbox-group input[type="checkbox"],
-.radio-group input[type="radio"] {
-    accent-color: lightgrey;
-}
-
-button[type="submit"] {
-    display: block;
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
     width: 100%;
     padding: 10px;
-    background-color: #333;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Submit Button Styling */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
     color: #fff;
+    font-size: 18px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-align: center;
 }
 
 button[type="submit"]:hover {
-    background-color: #555555;
+    background-color: #45a049;
 }
 
+/* Error and Success Messages */
+.error, .success-message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+}
 
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+ /* Footer Bottom */
+ .footer-bottom {
+    text-align: center;
+    padding: 10px;
+    background: #50402c;
+    margin-top: 20px;
+    border-top: 1px solid #5e3b34;
+    }
+
+    .footer-bottom p {
+    margin: 0;
+    }
