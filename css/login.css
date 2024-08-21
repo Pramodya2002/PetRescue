@@ -1,49 +1,112 @@
-body, html {
+* {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    
+      background: url('images/login-bg.jpg') no-repeat center center fixed; 
+      background-size: cover; /* Ensure the background covers the whole page */
 }
+  
+  .container {
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
 
-header {
-    background-color: #fff;
-    padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.container {
+/* Header */
+.header {
+    background: linear-gradient(135deg, #9e571d, #6f4501);
+    padding: 20px 0; /* Increase padding for a larger header */
+    color: white;
+    border-bottom: 4px solid #5a2f02;
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Vertically center content */
+    height: 150px; /* Increased height */
+    width:100%;
+    
+  }
+  
+  .header-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    max-width: 100%;
+    width: 100%;
+    max-width: 2000px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-.logo img {
-    height: 50px;
-    margin-right: 10px;
-    border-radius: 50px;
-}
-
-.logo h1 {
-    display: inline-block;
-    margin: 0;
-    font-size: 24px;
-    color: #333;
-}
-
-nav a {
+    justify-content: space-between;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    margin-right: auto; /* Push logo and title to the left */
+  }
+  
+  .logo img {
+    width: 120px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .title {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 80px; /* Increased font size */
+    color: #f7d1aa;
+    margin-left: 15px; /* Margin for spacing */
+    font-weight: 700;
+    position: relative;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+  }
+  
+  .nav-item {
+    margin-left: 15px; /* Spacing between buttons */
+  }
+  
+  .nav-link {
     text-decoration: none;
-    color: #333;
-    margin: 0 15px;
-    font-size: 18px;
-}
-
-nav a:hover {
-    text-decoration: underline;
-    color: #d84d1f;
-}
+    color: white;
+    font-size: 16px; /* Font size for buttons */
+    padding: 12px 20px; /* Padding for larger buttons */
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+  }
+  
+  .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .home-button {
+    background-color: #af874c;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    border-radius: 25px;
+    
+  }
+  
+  .home-button:hover {
+    background-color: #a05a45;
+    transform: scale(1.05);
+  }
+  
 
 .main {
     display: flex;
@@ -52,35 +115,85 @@ nav a:hover {
     margin-top: 50px;
 }
 
+/* Welcome Section */
 .welcome-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #5e2dd1;
-    padding: 50px;
-    color: #fff;
-    margin-bottom: 30px;
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(to right, #f0f8ff, #e6f7ff);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px;
 }
 
 .welcome-text {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.welcome-text img {
-    height: 60px;
-    margin-right: 15px;
+.welcome-img {
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
+    border: 5px solid #af874c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.welcome-img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.button1 {
+    margin-top: 20px;
+}
+
+.button1 .sign-up {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #af874c;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button1 .sign-up:hover {
+    background-color: #a05a45;
+    transform: scale(1.05);
+}
+
+.button1 .sign-up:active {
+    background-color: #8e4a35;
+    transform: scale(1);
+}
 .welcome-text h2 {
-    margin: 0;
-    font-size: 28px;
+    font-size: 2em;
+    color: #333;
+    margin: 10px 0;
+    font-weight: bold;
 }
 
-.welcome-text p {
-    margin: 5px 0 0;
+.login-message {
+  font-size: 1.2em;
+  color: #2c3e50;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
+
+.signup-message {
+  font-size: 1.1em;
+  color: #e74c3c;
+  font-style: italic;
+  margin-top: 5px;
+}
+
 
 .buttons {
     display: flex;
@@ -107,83 +220,166 @@ nav a:hover {
     border: none;
 }
 
+/* Login Section */
 .login-section {
     display: flex;
+    justify-content: center;
     align-items: center;
-    width: 80%;
-    margin: 0 auto;
-}
-
-.login-section img {
-    width: 50%;
-    border-radius: 8px;
+    min-height: 80vh; /* Center the form vertically */
 }
 
 .login-form {
-    margin-left: 50px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px; /* Increased width for a spacious look */
+    padding: 40px; /* Increased padding */
+    background: linear-gradient(135deg, #ffffff, #f2f2f2); /* Gradient background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.login-form h2 {
-    margin-top: 0;
-    font-size: 24px;
+.login-form:hover {
+    transform: translateY(-10px); /* Lift effect */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+.login-form h1 {
+    margin-bottom: 25px;
+    font-size: 32px; /* Larger font size */
     color: #333;
+    text-align: center;
+    font-weight: 600;
+    border-bottom: 2px solid #af874c; /* Underline effect */
+    padding-bottom: 10px;
 }
 
 .login-form label {
-    font-size: 16px;
-    color: #333;
+    font-size: 20px; /* Larger font size */
+    margin-bottom: 10px;
+    color: #666;
+}
+
+/* Login Button Styles */
+.login-form input[type="submit"] {
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient background */
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 30px; /* Rounded corners */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    text-transform: uppercase; /* Uppercase text */
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.login-form input[type="submit"]:hover {
+    background: linear-gradient(135deg, #feb47b, #ff7e5f); /* Reversed gradient on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.login-form input[type="submit"]:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); /* Enhanced focus shadow */
 }
 
 .login-form input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
+    padding: 15px;
+    font-size: 18px;
+    margin-bottom: 20px; /* Increased space between fields */
+    border-radius: 8px; /* Rounded corners */
+    border: 1px solid #ddd;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+.login-form input:focus {
+    border-color: #af874c; /* Highlight color on focus */
+    box-shadow: 0 0 8px rgba(175, 135, 76, 0.5); /* Focus shadow */
+    outline: none;
+}
+
+.login-form input[type="submit"] {
+    background-color: #af874c;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 30px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.login-form input[type="submit"]:hover {
+    background-color: #a05a45;
+    transform: scale(1.05);
+}
 #toggle-password {
     cursor: pointer;
     color: #5e2dd1;
 }
 
-.login-form button {
-    width: 100%;
-    background-color: #000;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
+.button2 {
+  background-color: #af8b4c; /* Green background */
+  color: white; /* White text */
+  padding: 12px 20px; /* Padding */
+  margin: 10px 0; /* Margin */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Bold text */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
 }
 
-.login-form button:hover {
-    background-color: #333;
+.button2:hover {
+  background-color: #a05345; /* Darker green on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
 }
+
+.button2:active {
+  background-color: #a05345; /* Even darker green when clicked */
+  transform: scale(0.98); /* Slightly decrease size when clicked */
+}
+
+
+
 
 .create-account {
     margin-top: 20px;
-    text-align: center;
 }
 
 .create-account a {
-    color: #5e2dd1;
+    color: #af874c;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .create-account a:hover {
     text-decoration: underline;
 }
 
-.forgot-password-section {
-    display: none;
+.forgot-password-link {
+    margin-top: 10px;
 }
+
+.forgot-password-link a {
+    color: #af874c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.forgot-password-link a:hover {
+    text-decoration: underline;
+}
+
+
+
+
 
 .error, .success {
     color: red;
@@ -221,4 +417,222 @@ nav a:hover {
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+
+.footer {
+    background: linear-gradient(135deg, #6f4501, #9e571d);
+    color: #ecf0f1;
+    padding: 40px 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Footer Content */
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  /* Footer Sections */
+  .footer-about, .footer-contact, .footer-subscribe, .footer-social {
+    flex: 1;
+    margin: 10px;
+    max-width: 25%;
+  }
+  
+  .footer-about h3, .footer-contact h3, .footer-subscribe h3, .footer-social h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .footer-about p, .footer-contact p, .footer-subscribe p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* Footer Subscribe Form */
+  .footer-subscribe form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-subscribe input[type=email] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
+  .btn-subscribe {
+    background: #db8534;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-subscribe:hover {
+    background: #b98729;
+  }
+  
+  /* Social Icons */
+  .footer-social a {
+    color: #ecf0f1;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-social a:hover {
+    color: #dba134;
+  }
+  
+  /* Footer Bottom */
+  .footer-bottom {
+    text-align: center;
+    padding: 10px;
+    background: #50402c;
+    margin-top: 20px;
+    border-top: 1px solid #5e3b34;
+  }
+  
+  .footer-bottom p {
+    margin: 0;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 767px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+  }
+  
+  
+  /* Responsive Styles */
+  @media (max-width: 767px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+  
+    .footer-card {
+        margin-bottom: 20px;
+    }
+  }
+  
+  
+  /* Responsive Styles */
+  @media (max-width: 767px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+  
+    .footer-content > div {
+        margin-bottom: 20px;
+    }
+  }
+  
+
+  /* Add general styling for the forgot password section */
+.forgot-password-section {
+  background-color: #f4f4f4; /* Light gray background for contrast */
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  max-width: 400px;
+  margin: 20px auto; /* Centered horizontally */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+/* Title styling */
+.forgot-password-section h2 {
+  font-size: 24px;
+  color: #333; /* Darker text for better readability */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form element styling */
+.forgot-password-section form {
+  display: flex;
+  flex-direction: column;
+}
+
+.forgot-password-section label {
+  font-size: 16px;
+  color: #555; /* Slightly lighter text color */
+  margin-bottom: 5px;
+}
+
+.forgot-password-section input[type="email"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc; /* Light border for input */
+  border-radius: 4px; /* Slightly rounded corners for inputs */
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.forgot-password-section button {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff; /* Blue background */
+  border: none;
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.forgot-password-section button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Error and success message styling */
+.forgot-password-section .error {
+  color: #e74c3c; /* Red for error messages */
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.forgot-password-section .success {
+  color: #2ecc71; /* Green for success messages */
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+  
+.btn-back {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff7b00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: #b35700;
 }
